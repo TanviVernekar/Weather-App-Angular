@@ -1,0 +1,51 @@
+<div class="main-container">
+  <div class="container">
+    <div class="header-container">
+      <div>
+        <img src="assets/images/logo_web.png" alt="logo" />
+      </div>
+      <div class="searchinputContainer">
+        <input class="searchInput" placeholder="Search city"
+        type="text"
+        name="text"
+        [(ngModel)]="text"
+        (ngModelChange)="handleChange($event)"
+        />
+        <div class="searchIcon">
+          <img src="assets/images/search_white.png" class="search-icon" alt="" />
+        </div>
+      </div>
+    
+    </div>
+    <div class="list-container">
+      <p (click)="handleCityClick(city.name)" *ngFor="let city of cityResults">{{city.name}}</p>
+    </div>
+
+    <div class="middle-container">
+      <div class="middleHeader">
+        <div class="middleHeader1">
+          <div
+          
+             >
+            <a class="navlabel"
+            [routerLinkActive]="active"
+            [routerLinkActiveOptions]="{ exact: true }" routerLink="">HOME</a>
+          </div>
+          <div><a class="navlabel"
+            [routerLinkActive]="active"
+             routerLink="fav">FAVOURITE</a></div>
+          <div><a class="navlabel" 
+            [routerLinkActive]="active" routerLink="recent">RECENT</a></div>
+        </div>
+        <span class="date-time">
+            {{ date | date : "E" | titlecase }},&nbsp;{{
+              date | date : "mediumDate" | titlecase
+            }}&nbsp;&nbsp;&nbsp;&nbsp;{{ date | date : "shortTime" | uppercase }}
+          </span>
+      </div>
+      <div class="line"></div>
+      <router-outlet></router-outlet>
+    </div>
+    
+  </div>
+</div>

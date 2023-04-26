@@ -1,0 +1,86 @@
+<div class="home-container">
+  <p class="city-name">{{ cityWeatherData.data?.location?.name }},
+    {{ cityWeatherData.data?.location?.region }}</p>
+  <div class="add-to-fav-container">
+    <img src="../../assets/images/icon_favourite.png" alt="" class="fav-icon" />
+    <p class="favtext">Add to favourite</p>
+  </div>
+  <div class="temp-container">
+    <img src="https:{{ cityWeatherData?.data?.current?.condition.icon }}" alt="" />
+    <div class="temp-desc-container">
+
+      <p *ngIf="celcius===true && farheneit === false" class="temp">{{ cityWeatherData?.data?.current?.temp_c }}</p>
+      <p *ngIf="farheneit === true && celcius === false" class="temp">{{ cityWeatherData?.data?.current?.temp_f }}</p>
+
+
+      <div class="button">
+        <button class="toggle-button" [class]="cel" (click)="handleClick('cel')">&#176;C</button>
+        <button class="toggle-button" [class]="far" (click)="handleClick('far')">&#176;F</button>
+      </div>
+      
+
+    </div>
+    <p class="temp-description">{{ cityWeatherData?.data?.current?.condition?.text }}</p>
+  </div>
+</div>
+<div class="line"></div>
+
+
+
+
+<div class="temp-details-container">
+    <div class="individual-temp-detail">
+      <img
+        src="../assets/images/icon_temperature_info.png"
+        class="thermo"
+        alt="logo"
+      />
+      <div class="temp-desc">
+        <p class="actual-entity">Min-Max</p>
+        <p class="actual-value">
+          23&#176;-42&#176;
+         
+        </p>
+      </div>
+    </div>
+    <div class="individual-temp-detail">
+      <img
+        src="../assets/images/icon_precipitation_info.png"
+        class="precipitation"
+        alt="logo"
+      />
+      <div class="temp-desc">
+        <p class="actual-entity">Precipitation</p>
+        <p class="actual-value">{{ cityWeatherData?.data?.current?.precip_mm }}%</p>
+      </div>
+    </div>
+    <div class="individual-temp-detail">
+      <img
+        src="../assets/images/icon_humidity_info.png"
+        class="humidity"
+        alt="logo"
+      />
+      <div class="temp-desc">
+        <p class="actual-entity">Humidity</p>
+        <p class="actual-value">{{ cityWeatherData?.data?.current?.humidity }}%</p>
+      </div>
+    </div>
+    <div class="individual-temp-detail">
+      <img src="../assets/images/icon_wind_info.png" class="wind" alt="logo" />
+      <div class="temp-desc">
+        <p class="actual-entity">Wind</p>
+        <p class="actual-value">{{ cityWeatherData?.data?.current?.wind_mph }}mph</p>
+      </div>
+    </div>
+    <div class="individual-temp-detail">
+      <img
+        src="../assets/images/icon_visibility_info.png"
+        class="visibility"
+        alt="logo"
+      />
+      <div class="temp-desc">
+        <p class="actual-entity">Visibility</p>
+        <p class="actual-value">{{ cityWeatherData?.data?.current?.vis_miles }}mph</p>
+      </div>
+    </div>
+  </div>
